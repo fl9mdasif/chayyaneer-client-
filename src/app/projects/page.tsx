@@ -2,45 +2,10 @@
 
 import React from 'react';
 import { Box, Grid, Card, CardMedia, Typography } from '@mui/material';
-import p1 from '../../assets/images/projects/p-1.jpeg'
-import p2 from '../../assets/images/projects/p-2.jpeg'
-import p3 from '../../assets/images/projects/p-3.jpeg'
-import p4 from '../../assets/images/projects/p-4.jpeg'
-import p5 from '../../assets/images/projects/p-5.jpeg'
+import { projects } from './data';
+import Link from 'next/link';
 
-const services = [
-    {
-        title: 'Chayyaneer BrentWood',
-        image: p1.src,
-        location: 'Mirpur, Dhaka',
-        description: 'We offer reliable construction services for residential and commercial projects.',
-    },
-    {
-        title: 'Resonac by Chayyaneer',
-        image: p2.src,
-        location: 'Dhaka',
-        description: 'Our architects create innovative and functional designs for every project.',
-    },
-    {
-        title: 'Chayyaneer Gulsan-2',
-        image: p3.src,
-        location: 'Gulsan',
-        description: 'Transform and upgrade your space with our professional renovation services.',
-    },
-    {
-        title: 'R-6 Chayyaneer',
-        image: p4.src,
-        location: 'Agargaon',
-        description: 'Keep your property in top condition with our maintenance solutions.',
-    },
-    {
-        title: 'R-6 Chayyaneer',
-        image: p5.src,
-        location: 'Banani',
-        description: 'Keep your property in top condition with our maintenance solutions.',
-    },
 
-];
 
 const Projects = () => {
     return (
@@ -89,62 +54,68 @@ const Projects = () => {
             </Typography>
 
             <Grid container spacing={3}>
-                {services.map((service, index) => (
+                {projects.map((project, index) => (
                     <Grid item xs={12} sm={6} md={3} key={index}>
-                        <Card
-                            sx={{
-                                position: 'relative',
-                                overflow: 'hidden',
-                                borderRadius: '16px',
-                                boxShadow: 3,
-                                transition: 'transform 0.3s',
-                                '&:hover': {
-                                    transform: 'scale(1.05)',
-                                },
-
-                            }}
+                        <Link
+                            href={`/projects/${project.id}`}
+                            style={{ textDecoration: 'none', color: 'inherit' }}
                         >
-                            <CardMedia
-                                component="img"
-                                height="450"
-                                image={service.image}
-                                alt={service.title}
+
+                            <Card
                                 sx={{
-                                    filter: 'brightness(0.9)',
-                                    transition: 'all 0.3s',
-                                    '&:hover': { filter: 'brightness(0.6)' },
+                                    position: 'relative',
+                                    overflow: 'hidden',
+                                    borderRadius: '16px',
+                                    boxShadow: 3,
+                                    transition: 'transform 0.3s',
+                                    '&:hover': {
+                                        transform: 'scale(1.05)',
+                                    },
+
                                 }}
-                            />
-
-
-                            <Box sx={{
-                                backgroundColor: '#2d2d2d',
-                                width: 'full'
-                            }}>
-                                <Typography
+                            >
+                                <CardMedia
+                                    component="img"
+                                    height="450"
+                                    image={project.image}
+                                    alt={project.title}
                                     sx={{
+                                        filter: 'brightness(0.9)',
+                                        transition: 'all 0.3s',
+                                        '&:hover': { filter: 'brightness(0.6)' },
+                                    }}
+                                />
+
+
+                                <Box sx={{
+                                    backgroundColor: '#2d2d2d',
+                                    width: 'full'
+                                }}>
+                                    <Typography
+                                        sx={{
+                                            textAlign: 'start',
+                                            mb: -1,
+                                            pt: 1,
+                                            pl: 2,
+                                            color: "white"
+                                        }}>
+                                        {project.location}
+
+                                    </Typography>
+                                    <Typography sx={{
                                         textAlign: 'start',
-                                        mb: -1,
-                                        pt: 1,
-                                        pl: 2,
+                                        p: 2,
+                                        fontSize: { xs: 15, md: 18, lg: 23 },
                                         color: "white"
                                     }}>
-                                    {service.location}
+                                        {project.title}
 
-                                </Typography>
-                                <Typography sx={{
-                                    textAlign: 'start',
-                                    p: 2,
-                                    fontSize: { xs: 15, md: 18, lg: 23 },
-                                    color: "white"
-                                }}>
-                                    {service.title}
+                                    </Typography>
 
-                                </Typography>
+                                </Box>
 
-                            </Box>
-
-                        </Card>
+                            </Card>
+                        </Link>
 
                     </Grid>
                 ))}
