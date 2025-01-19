@@ -3,6 +3,7 @@
 import React from 'react';
 import { Box, Typography, Grid, Button, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import Services from '../services/page';
 // import aboutUs from '@/assets/images/about-us.png'
 
 const AboutUs = () => {
@@ -11,6 +12,7 @@ const AboutUs = () => {
             sx={{
                 display: 'flex',
                 alignItems: 'center',
+                flexDirection: 'column',
                 justifyContent: 'center',
                 minHeight: '100vh',
                 mx: { xs: 1, md: 8 },
@@ -19,6 +21,8 @@ const AboutUs = () => {
                 bgcolor: '#f8f9fa',
             }}
         >
+            <Services />
+            {/* .... */}
             <Grid container spacing={4} alignItems="center">
                 {/* Left Image Section */}
                 <Grid item xs={12} md={6} lg={5}>
@@ -119,6 +123,8 @@ const AboutUs = () => {
                     </Box>
                 </Grid>
             </Grid>
+
+
         </Box>
     );
 };
